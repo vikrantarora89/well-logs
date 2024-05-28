@@ -9,7 +9,8 @@ create() {
 }
 
 delete() {
-  aws s3api delete-bucket --bucket "$SOURCE_BUCKET"
+  for key in $(aws s3api list-objects --bucket "$SOURCE_BUCKET" --no-paginate --query Contents[].Key)
+      aws s3api delete-object --bucket "$SOURCE_BUCKET" --key key
 }
 
 
