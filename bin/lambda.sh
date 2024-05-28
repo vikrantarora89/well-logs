@@ -2,7 +2,7 @@
 set -eu
 
 source configs/config
-set +e
+set -e
 source bin/usage.sh
 
 role_name="$FUNCTION_NAME"Role
