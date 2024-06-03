@@ -1,0 +1,1010 @@
+ca5ee5f8d442a9590de5697c4e87794bd262e552 1 1 1
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	#!/bin/bash
+921a72cdeeba752a4408104bce0a9f717c1aefc5 2 2 1
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690316653
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Exit script if config file is missing
+previous 87f1189974949b1234e91d88775ffcf6917466bf bin/lambda.sh
+filename bin/lambda.sh
+	set -eu
+ca5ee5f8d442a9590de5697c4e87794bd262e552 3 3 2
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 4 4
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	source configs/config
+921a72cdeeba752a4408104bce0a9f717c1aefc5 5 5 1
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690316653
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Exit script if config file is missing
+previous 87f1189974949b1234e91d88775ffcf6917466bf bin/lambda.sh
+filename bin/lambda.sh
+	set +e
+ca5ee5f8d442a9590de5697c4e87794bd262e552 5 6 79
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	source bin/usage.sh
+ca5ee5f8d442a9590de5697c4e87794bd262e552 6 7
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 7 8
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	role_name="$FUNCTION_NAME"Role
+ca5ee5f8d442a9590de5697c4e87794bd262e552 8 9
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 9 10
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	parse_json() {
+ca5ee5f8d442a9590de5697c4e87794bd262e552 10 11
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  region="$(aws configure get region)"
+ca5ee5f8d442a9590de5697c4e87794bd262e552 11 12
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  account_number="$(aws sts get-caller-identity | jq -r ".Account")"
+ca5ee5f8d442a9590de5697c4e87794bd262e552 12 13
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  arn="arn:aws:lambda:$region:$account_number:function:$FUNCTION_NAME"
+ca5ee5f8d442a9590de5697c4e87794bd262e552 13 14
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  filter=".LambdaFunctionConfigurations[0].LambdaFunctionArn = \"$arn\""
+ca5ee5f8d442a9590de5697c4e87794bd262e552 14 15
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 15 16
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  jq "$filter" configs/notification.json
+ca5ee5f8d442a9590de5697c4e87794bd262e552 16 17
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	}
+ca5ee5f8d442a9590de5697c4e87794bd262e552 17 18
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 18 19
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	package_deployment() {
+ca5ee5f8d442a9590de5697c4e87794bd262e552 19 20
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  rm -rf package deployment.zip
+ca5ee5f8d442a9590de5697c4e87794bd262e552 20 21
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  mkdir package
+ca5ee5f8d442a9590de5697c4e87794bd262e552 21 22
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  PIP_REQUIRE_VIRTUALENV=false pip install \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 22 23
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --platform manylinux2014_x86_64 \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 23 24
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --target=package \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 24 25
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --implementation cp \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 25 26
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --python-version 3.10 \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 26 27
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --only-binary=:all: \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 27 28
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  .
+ca5ee5f8d442a9590de5697c4e87794bd262e552 28 29
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  rm -rf package/scipy*
+ca5ee5f8d442a9590de5697c4e87794bd262e552 29 30
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  (cd package && zip -r ../deployment.zip .)
+ca5ee5f8d442a9590de5697c4e87794bd262e552 30 31
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  zip deployment.zip lambda_function.py
+ca5ee5f8d442a9590de5697c4e87794bd262e552 31 32
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  aws s3 cp deployment.zip s3://"$SOURCE_BUCKET"/deployment.zip
+ca5ee5f8d442a9590de5697c4e87794bd262e552 32 33
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	}
+ca5ee5f8d442a9590de5697c4e87794bd262e552 33 34
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 34 35
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	create() {
+ca5ee5f8d442a9590de5697c4e87794bd262e552 35 36
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  echo "Creating Lambda function $FUNCTION_NAME"
+ca5ee5f8d442a9590de5697c4e87794bd262e552 36 37
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 37 38
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  echo "Setting up policies and roles"
+ca5ee5f8d442a9590de5697c4e87794bd262e552 38 39
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  aws iam create-role --role-name "$role_name" --assume-role-policy-document file://configs/trust-policy.json
+ca5ee5f8d442a9590de5697c4e87794bd262e552 39 40
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  aws iam attach-role-policy --role-name "$role_name" --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess
+ca5ee5f8d442a9590de5697c4e87794bd262e552 40 41
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  aws iam attach-role-policy --role-name "$role_name" --policy-arn arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+ca5ee5f8d442a9590de5697c4e87794bd262e552 41 42
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  aws iam attach-role-policy --role-name "$role_name" --policy-arn arn:aws:iam::aws:policy/CloudWatchFullAccess
+ca5ee5f8d442a9590de5697c4e87794bd262e552 42 43
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  sleep 5
+ca5ee5f8d442a9590de5697c4e87794bd262e552 43 44
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 44 45
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  echo "Packing the deployment"
+ca5ee5f8d442a9590de5697c4e87794bd262e552 45 46
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  account_number="$(aws sts get-caller-identity | jq -r ".Account")"
+ca5ee5f8d442a9590de5697c4e87794bd262e552 46 47
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  package_deployment
+ca5ee5f8d442a9590de5697c4e87794bd262e552 47 48
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 48 49
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  aws lambda create-function \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 49 50
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --function-name "$FUNCTION_NAME" \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 50 51
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --runtime python3.10 \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 51 52
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --code S3Bucket="$SOURCE_BUCKET",S3Key=deployment.zip \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 52 53
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --handler lambda_function.lambda_handler \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 53 54
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --role arn:aws:iam::"$account_number":role/"$role_name" \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 54 55
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --timeout 30 \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 55 56
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --memory-size 1024
+ca5ee5f8d442a9590de5697c4e87794bd262e552 56 57
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 57 58
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  aws lambda add-permission \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 58 59
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --function-name "$FUNCTION_NAME" \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 59 60
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --principal s3.amazonaws.com \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 60 61
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --statement-id s3invoke \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 61 62
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --action "lambda:InvokeFunction" \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 62 63
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --source-arn arn:aws:s3:::"$SOURCE_BUCKET" \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 63 64
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --source-account "$account_number"
+ca5ee5f8d442a9590de5697c4e87794bd262e552 64 65
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 65 66
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  aws s3api put-bucket-notification-configuration \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 66 67
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --bucket "$SOURCE_BUCKET" \
+ca5ee5f8d442a9590de5697c4e87794bd262e552 67 68
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+		  --notification-configuration "$(parse_json)"
+ca5ee5f8d442a9590de5697c4e87794bd262e552 68 69
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	}
+ca5ee5f8d442a9590de5697c4e87794bd262e552 69 70
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 70 71
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	delete() {
+ca5ee5f8d442a9590de5697c4e87794bd262e552 71 72
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  echo "Deleting Lamdba function $FUNCTION_NAME"
+ca5ee5f8d442a9590de5697c4e87794bd262e552 72 73
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 73 74
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  aws lambda delete-function --function-name "$FUNCTION_NAME"
+ca5ee5f8d442a9590de5697c4e87794bd262e552 74 75
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 75 76
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  aws iam detach-role-policy --role-name "$role_name" --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess
+ca5ee5f8d442a9590de5697c4e87794bd262e552 76 77
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  aws iam detach-role-policy --role-name "$role_name" --policy-arn arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+ca5ee5f8d442a9590de5697c4e87794bd262e552 77 78
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  aws iam detach-role-policy --role-name "$role_name" --policy-arn arn:aws:iam::aws:policy/CloudWatchFullAccess
+ca5ee5f8d442a9590de5697c4e87794bd262e552 78 79
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 79 80
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	  aws iam delete-role --role-name "$role_name"
+ca5ee5f8d442a9590de5697c4e87794bd262e552 80 81
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	}
+ca5ee5f8d442a9590de5697c4e87794bd262e552 81 82
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 82 83
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	
+ca5ee5f8d442a9590de5697c4e87794bd262e552 83 84
+author Don Fox
+author-mail <don@thedataincubator.com>
+author-time 1690315797
+author-tz -0400
+committer Don Fox
+committer-mail <don@thedataincubator.com>
+committer-time 1690566229
+committer-tz -0400
+summary Add deployment shell scripts
+filename bin/lambda.sh
+	main "$@"

@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "imagehash"
+version = "4.3.1"
+description = "ImageHash package"
+authors = ["vikrant Arora <vikrant.arora@test.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+boto3 = "1.34.117"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
